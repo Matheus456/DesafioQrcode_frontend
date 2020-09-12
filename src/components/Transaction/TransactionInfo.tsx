@@ -2,13 +2,17 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import generateQRCodeString from "../../services/Transaction/GenerateQRCodeString";
 import TransactionInfo from "./TransactionInterface";
+// import QRCode from "qrcode.react";
 
 export const TransactionInfoForm = () => {
+  const QRCode = require("qrcode.react");
+
   const { register, handleSubmit, errors } = useForm<TransactionInfo>();
   const [QRCodeString, setQRCodeString] = useState<string>();
 
   const handleData = (data: string) => {
     console.log(data);
+    setQRCodeString(data);
   };
 
   const onSubmit = (data: TransactionInfo) => {
@@ -63,6 +67,7 @@ export const TransactionInfoForm = () => {
         </div>
         <button type="submit">Save</button>
       </form>
+      {QRCodeString && <QRCode value={QRCodeString} />}
     </div>
   );
 };
