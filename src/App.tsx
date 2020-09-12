@@ -1,9 +1,8 @@
-import React from 'react';
+import React from "react";
+import TransactionInfoForm from "./components/Transaction/TransactionInfo";
 
 function App() {
-  return (
-    <h1>Hello Word</h1>
-  );
+  return <TransactionInfoForm />;
 }
 
 export default App;
